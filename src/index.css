@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* El modo oscuro se activa con la clase .dark en <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Tema NutriScan — Verde Lechuga con soporte de modo claro/oscuro.
+ * Los colores semánticos (app, surface, line, strong, content, muted, faint)
+ * se resuelven con variables CSS que cambian según el tema.
+ */
+@theme {
+  --color-brand-50: #f3fbe8;
+  --color-brand-100: #e3f6c8;
+  --color-brand-200: #c9ee96;
+  --color-brand-300: #a9e25a;
+  --color-brand-400: #8fd534;
+  --color-brand-500: #6fb91b;
+  --color-brand-600: #549213;
+  --color-brand-700: #426f14;
+  --color-brand-800: #375816;
+  --color-brand-900: #2f4a17;
+
+  /* Tono oscuro fijo (texto sobre botones verdes) */
+  --color-ink-900: #0a0f0a;
+
+  /* Colores semánticos (mapeados a variables que cambian por tema) */
+  --color-app: var(--c-app);
+  --color-surface: var(--c-surface);
+  --color-surface2: var(--c-surface2);
+  --color-line: var(--c-line);
+  --color-strong: var(--c-strong);
+  --color-content: var(--c-content);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---- Tema claro (por defecto) ---- */
+:root {
+  --c-app: #f7faf5;
+  --c-surface: #ffffff;
+  --c-surface2: #f1f5ec;
+  --c-line: #e4e9df;
+  --c-strong: #18230f;
+  --c-content: #3c4636;
+  --c-muted: #6e7867;
+  --c-faint: #9aa394;
+  color-scheme: light;
+}
+
+/* ---- Tema oscuro ---- */
+.dark {
+  --c-app: #0a0f0a;
+  --c-surface: #111811;
+  --c-surface2: #172117;
+  --c-line: rgba(255, 255, 255, 0.08);
+  --c-strong: #f1f5ee;
+  --c-content: #c5cdbf;
+  --c-muted: #8e9886;
+  --c-faint: #6b745f;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--c-app);
+  color: var(--c-content);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
