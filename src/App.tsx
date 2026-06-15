@@ -3,7 +3,6 @@ import { ThemeProvider } from '@/core/theme/ThemeContext'
 import { AuthProvider } from '@/modules/acceso/context/AuthContext'
 import ProtectedRoute from '@/modules/acceso/components/common/ProtectedRoute'
 import MainLayout from '@/core/components/layout/MainLayout'
-import ModulePlaceholder from '@/core/components/ModulePlaceholder'
 
 import LandingPage from '@/core/pages/LandingPage'
 import LoginPage from '@/modules/acceso/pages/LoginPage'
@@ -14,6 +13,10 @@ import RolesPage from '@/modules/acceso/pages/RolesPage'
 
 import EnfermedadesPage from '@/modules/clinico/pages/EnfermedadesPage'
 import HistorialClinicoPage from '@/modules/clinico/pages/HistorialClinicoPage'
+
+import EscanearPage from '@/modules/alimentario/pages/EscanearPage'
+import MisEscaneosPage from '@/modules/alimentario/pages/MisEscaneosPage'
+import ProductosPage from '@/modules/alimentario/pages/ProductosPage'
 
 function App() {
   return (
@@ -37,25 +40,16 @@ function App() {
               {/* Módulo Clínico — Cliente */}
               <Route path="clinico/historial" element={<HistorialClinicoPage />} />
 
-              {/* Módulo Alimentario — Cliente (placeholders) */}
-              <Route
-                path="alimentario/escanear"
-                element={<ModulePlaceholder title="Escanear Alimento" description="Sube una foto y analiza su compatibilidad con tu salud." />}
-              />
-              <Route
-                path="alimentario/historial"
-                element={<ModulePlaceholder title="Mis Escaneos" description="Historial de alimentos que has analizado." />}
-              />
+              {/* Módulo Alimentario — Cliente (en desarrollo) */}
+              <Route path="alimentario/escanear" element={<EscanearPage />} />
+              <Route path="alimentario/historial" element={<MisEscaneosPage />} />
 
               {/* Solo ADMIN */}
               <Route element={<ProtectedRoute roles={['ADMIN']} />}>
                 <Route path="usuarios" element={<UsuariosPage />} />
                 <Route path="roles" element={<RolesPage />} />
                 <Route path="clinico/enfermedades" element={<EnfermedadesPage />} />
-                <Route
-                  path="alimentario/productos"
-                  element={<ModulePlaceholder title="Catálogo de Productos" description="Carga y administra el catálogo de alimentos." />}
-                />
+                <Route path="alimentario/productos" element={<ProductosPage />} />
               </Route>
             </Route>
           </Route>
